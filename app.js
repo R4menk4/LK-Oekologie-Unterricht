@@ -1,0 +1,7 @@
+const home=document.querySelector('#home'),viewer=document.querySelector('#viewer'),frames=document.querySelector('#frames');let lastButton;const opened=new Map();
+function show(id){const m=modules.find(x=>x.id===id);if(!m){home.hidden=false;viewer.hidden=true;return}lastButton=document.querySelector('[data-id="'+id+'"]');for(const f of opened.values())f.hidden=true;let frame=opened.get(id);if(!frame){frame=document.createElement('iframe');frame.src=m.path;frame.title=m.title;frame.allow='fullscreen';opened.set(id,frame);frames.append(frame)}frame.hidden=false;home.hidden=true;viewer.hidden=false;document.querySelector('#current').textContent=m.title;document.title=m.title+' · LK-Oekologie-Unterricht';document.querySelector('#back').focus()}
+for(const b of document.querySelectorAll('[data-id]'))b.onclick=()=>{location.hash=b.dataset.id};
+function route(){const id=location.hash.slice(1);if(id)show(id);else{home.hidden=false;viewer.hidden=true;document.title='LK-Oekologie-Unterricht';lastButton?.focus()}}
+window.addEventListener('hashchange',route);document.querySelector('#back').onclick=()=>{location.hash=''};
+document.querySelector('#fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await viewer.requestFullscreen()}catch{document.querySelector('#fullscreen').textContent='Vollbild nicht verfügbar'}};
+document.addEventListener('fullscreenchange',()=>{document.querySelector('#fullscreen').textContent=document.fullscreenElement?'Vollbild beenden':'Vollbild'});route();

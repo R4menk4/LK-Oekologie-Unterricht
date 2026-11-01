@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f3a">
+  <meta name="description" content="Interaktives Modell-Labor zu Räuber-Beute-Beziehungen und den Lotka-Volterra-Regeln.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23173f3a'/%3E%3Cpath d='M11 39c9-19 24-25 42-12M15 47c12 6 25 3 38-10' fill='none' stroke='%23efc75e' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='31' r='4' fill='%23d96b42'/%3E%3Ccircle cx='46' cy='35' r='4' fill='%23287f83'/%3E%3C/svg%3E">
+  <title>Zwischen Hase und Luchs – Lotka-Volterra erkunden</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Startseite">
+      <svg class="brand-mark" viewBox="0 0 52 52" aria-hidden="true">
+        <circle cx="26" cy="26" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M10 31c7-14 17-18 31-11M13 36c8 5 18 4 28-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="18" cy="25" r="3" fill="currentColor"/><circle cx="36" cy="27" r="3" fill="currentColor"/>
+      </svg>
+      <span><strong>Hase &amp; Luchs</strong><small>Ein Modell-Labor</small></span>
+    </a>
+    <div class="top-actions">
+      <span id="progressText" class="progress-text">1 von 7</span>
+      <button class="icon-button" id="resetButton" type="button" title="Neu beginnen" aria-label="Neu beginnen">↻</button>
+    </div>
+    <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+  </header>
+
+  <main id="top" class="app-shell">
+    <nav class="step-nav" aria-label="Lernweg">
+      <button class="step-tab active" data-step="0"><span>01</span><b>Spuren lesen</b></button>
+      <button class="step-tab" data-step="1"><span>02</span><b>System verstehen</b></button>
+      <button class="step-tab" data-step="2"><span>03</span><b>Regel 1</b></button>
+      <button class="step-tab" data-step="3"><span>04</span><b>Regel 2</b></button>
+      <button class="step-tab" data-step="4"><span>05</span><b>Regel 3</b></button>
+      <button class="step-tab" data-step="5"><span>06</span><b>Modellcheck</b></button>
+      <button class="step-tab" data-step="6"><span>07</span><b>Abschluss</b></button>
+    </nav>
+
+    <section class="workspace">
+      <div class="story-panel">
+        <p class="eyebrow" id="eyebrow">Mission 01</p>
+        <h1 id="stepTitle">Wer folgt wem?</h1>
+        <p class="lead" id="stepLead">Zwei Populationen, ein Muster. Ordne die Kurven zu.</p>
+        <div id="taskArea" class="task-area"></div>
+      </div>
+
+      <aside class="lab-panel" aria-label="Populationsdiagramm">
+        <div class="lab-header">
+          <div>
+            <p class="eyebrow">Modell-Labor</p>
+            <h2 id="chartTitle">Populationen im Zeitverlauf</h2>
+          </div>
+          <div id="legend" class="legend" aria-label="Legende"></div>
+        </div>
+        <div class="chart-wrap">
+          <svg id="chart" viewBox="0 0 760 420" role="img" aria-labelledby="chartTitle chartDescription">
+            <desc id="chartDescription">Liniendiagramm zweier Populationen im Zeitverlauf.</desc>
+          </svg>
+          <div id="chartNote" class="chart-note" hidden></div>
+        </div>
+        <div id="labControls" class="lab-controls"></div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>Biologie LK · Modellkompetenz</span>
+    <button id="teacherInfoButton" class="text-button" type="button">Hinweise für Lehrkräfte</button>
+  </footer>
+
+  <dialog id="teacherDialog">
+    <div class="dialog-head">
+      <div><p class="eyebrow">Kurzinfo</p><h2>Für Lehrkräfte</h2></div>
+      <button class="icon-button" id="closeTeacherDialog" aria-label="Schließen">×</button>
+    </div>
+    <p>Das Programm führt vom Kurvenlesen zur Modellkritik. Die Lotka-Volterra-Gleichungen arbeiten nur im Hintergrund.</p>
+    <ul>
+      <li>Arbeitsform: Partnerarbeit</li>
+      <li>Zeit: etwa 50 Minuten plus Sicherung</li>
+      <li>Prinzip: beobachten, formulieren, vergleichen</li>
+      <li>Keine Datenübertragung; Eingaben bleiben im Browser</li>
+    </ul>
+    <details>
+      <summary>Mathematischer Motor</summary>
+      <p><code>dB/dt = aB − bBR</code><br><code>dR/dt = cBR − dR</code></p>
+      <p>Die numerische Berechnung erfolgt mit kleinen Zeitschritten. Die Formeln sind kein Lernziel.</p>
+    </details>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

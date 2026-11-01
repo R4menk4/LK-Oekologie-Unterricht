@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f3a">
+  <meta name="description" content="Interaktives Lernprogramm zu Nahrungsnetzen, Trophieebenen, Photosynthese, Zellatmung und Destruenten im Tangwald.">
+  <title>Tangwald vernetzt – Nahrungsnetz und Destruenten</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#app" aria-label="Zum Lernprogramm">
+      <svg class="brand-mark" viewBox="0 0 56 56" aria-hidden="true">
+        <path d="M18 48c2-12 1-24 1-38M19 20c7-7 13-8 19-6M19 29c8-6 15-6 22-3M19 38c7-5 13-5 19-2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="19" cy="13" r="3" fill="currentColor"/><circle cx="27" cy="18" r="2.5" fill="currentColor"/><circle cx="29" cy="28" r="2.5" fill="currentColor"/>
+      </svg>
+      <span><strong>Tangwald vernetzt</strong><small>Nahrungsnetz &amp; Destruenten</small></span>
+    </a>
+    <div class="top-actions">
+      <span id="progressText" class="progress-text">1 von 6</span>
+      <button id="resetButton" class="icon-button" type="button" aria-label="Lernprogramm zurücksetzen">↻</button>
+    </div>
+    <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+  </header>
+
+  <main id="app" class="app-shell">
+    <nav id="stepNav" class="step-nav" aria-label="Lernweg"></nav>
+
+    <section class="workspace">
+      <header class="workspace-head">
+        <div>
+          <p id="eyebrow" class="eyebrow">Mission 01</p>
+          <h1 id="stepTitle">Rollen im Tangwald</h1>
+          <p id="stepLead" class="lead"></p>
+        </div>
+        <div id="stepStatus" class="status-chip" aria-live="polite">Noch offen</div>
+      </header>
+      <div id="taskArea" class="task-area"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Biologie LK · Ökologie · Bearbeitungszeit etwa 20–25 Minuten</span>
+    <button id="teacherInfoButton" class="text-button" type="button">Hinweise für Lehrkräfte</button>
+  </footer>
+
+  <dialog id="teacherDialog">
+    <div class="dialog-head">
+      <div><p class="eyebrow">Kurzinfo</p><h2>Hinweise für Lehrkräfte</h2></div>
+      <button id="closeTeacherDialog" class="icon-button dark" type="button" aria-label="Dialog schließen">×</button>
+    </div>
+    <p>Das Lernprogramm führt vom Ordnen einzelner Organismen zum vollständigen Tangwald-Nahrungsnetz. Die Pfeilrichtung wird vor der Vernetzungsaufgabe ausdrücklich vorgegeben.</p>
+    <ul>
+      <li>Arbeitsform: Einzel- oder Partnerarbeit</li>
+      <li>Bearbeitungszeit: etwa 20–25 Minuten</li>
+      <li>Schwerpunkte: Produzenten und Konsumenten, Trophieebenen, Photosynthese, Zellatmung, Detritus, Detritivoren und Destruenten</li>
+      <li>Keine Datenübertragung; der Lernstand bleibt im verwendeten Browser.</li>
+    </ul>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
